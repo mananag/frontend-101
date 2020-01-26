@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <style>
+            .box1
+            {
+                position: absolute;
+                display:flex;
+                top: 45vh;
+                left:10vw;
+                flex-wrap: nowrap;
+            }
+            .box1-front
+            {
+                height: 50px;
+                width: 100px;
+                transform:perspective(300px)rotateY(-20deg);
+                background-color: red;
+                border: 2px solid black;
+                transform-style: preserve-3d;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-transform: uppercase;
+                font-weight: bold;
+                box-sizing: border-box;
+                transition: 0.5s ease;
+                cursor: pointer;
+            }
+            .box1-side
+            {
+                height: 50px;
+                width: 100px;
+                transform:translateX(-50px)perspective(300px)rotateY(70deg)translateX(50%)scale(1.04);
+                background-color: red;
+                border: 2px solid black;
+                transform-style: preserve-3d;
+                box-sizing: border-box;
+                -webkit-transition: 0.5s ease;
+                cursor: pointer;
+            }
+            .box1-front:hover
+            {
+                transform: perspective(300px);
+            }
+            .box1-front:hover~.box1-side
+            {
+                transform:translateX(-50px)perspective(300px)rotateY(90deg)translateX(50%)scale(1.04);
+            }
+            .box2
+            {
+                position: absolute;
+                top: 45vh;
+                right: 20vw;
+                perspective: 300px;
+                perspective-origin: 200px -100px;
+                display: block;
+            }
+            .box2 > div
+            {
+                height: 50px;
+                position: absolute;
+                background-color: red;
+                border: 2px solid black;
+                transform-style: preserve-3d;
+                transition: 0.5s ease;
+            }
+            .box2-1
+            {
+                display: flex;
+                width: 100px;
+                align-items: center;
+                justify-content: center;
+                text-transform: uppercase;
+                font-weight: bold;
+                transform: translateZ(30px);
+                transform-origin: 50px 25px 20px;
+            }
+            .box2-1:hover
+            {
+                transform: translateZ(0px);
+            }
+            .box2-2
+            {
+                width: 50px;
+                top:0;
+                left: 104px;
+                transform-origin: 0 50px;
+                transform: translateZ(30px) rotateY(90deg);
+            }
+            .box2-1:hover~.box2-2
+            {
+                transform: translateZ(0px);
+            }
+            .box2-3
+            {
+                width: 100px;
+                top:0 ;
+                transform-origin: 0 0;
+                transform: translateZ(30px) rotateX(-90deg)
+            }
+            .box2-1:hover~.box2-3
+            {
+                transform: translateZ(0px) rotateX(-180deg);
+            }
+            .box2-4
+            {
+                width: 50px;
+                top:0;
+                left: 0px;
+                transform-origin: 0 50px;
+                transform: translateZ(30px) rotateY(90deg);
+                z-index: -10;
+            }
+            .box2-1:hover~.box2-4
+            {
+                transform: translateZ(0px)rotateY(180deg);
+            }
+            .box2-5
+            {
+                width: 100px;
+                top:50 ;
+                transform-origin: 0 0;
+                transform: translateZ(30px) rotateX(-90deg);
+                z-index: -10;
+            }
+            .box2-1:hover~.box2-5
+            {
+                transform: translateZ(0px);
+            }    
+        </style>
+        <title>A3-3D Button</title>
+    </head>
+    <body>
+        <div class="box1">
+            <div class="box1-front">Button</div>
+            <div class="box1-side"></div>
+        </div>
+        <div class="box2">
+            <div class="box2-1">Button</div>
+            <div class="box2-2"></div>
+            <div class="box2-3"></div>
+            <div class="box2-4"></div>
+            <div class="box2-5"></div>
+        </div>
+    </body>
+</html>
