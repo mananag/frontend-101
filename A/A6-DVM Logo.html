@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A-6 DVM Logo</title>
+</head>
+<body >
+    <svg id="dvm" viewBox="0 0 1280 1024" style="background: black;" >
+        <polygon id="d" points="343,151.909 343,883 529.752,733.828 489.294,676.613 409.195,745.642 409.195,330.714 594.961,567.412 595.023,466.804 343,151.909" />
+        <polygon id="d-border" points="343,151.909 343,883 529.752,733.828 489.294,676.613 409.195,745.642 409.195,330.714 594.961,567.412 595.023,466.804 343,151.909" />
+        <polygon id="v" points="502.558,535.159 502.487,635.699 644.347,816.94 902.187,472.053 902.187,346.906 644.347,699.367 502.558,535.159" />
+        <polygon id="v-border" points="502.558,535.159 502.487,635.699 644.347,816.94 902.187,472.053 902.187,346.906 644.347,699.367 502.558,535.159" />
+        <polygon id="m" points="934.431,215.722 933.721,831.089 1004,900.525 1004,134.148 934.431,215.722" />
+        <polygon id="m-border" points="934.431,215.722 933.721,831.089 1004,900.525 1004,134.148 934.431,215.722" />
+    </svg>
+</body>
+<style>
+    #dvm
+    {
+        position: absolute;
+        top: 0;
+        left: calc(50vw);
+        transform: translateX(-50%);
+        height: 100vh;
+    }
+    #d
+    {
+        fill: white;
+        animation-name: d-fill;
+        animation-duration: 2.5s;
+        stroke: none;
+    }
+    @keyframes d-fill {
+        0%{
+            fill: none;
+        }
+        66%{
+            fill:black;
+        }
+        100%{
+            fill: white;
+        }
+    }
+    #d-border{
+        stroke-width: 1;
+        stroke: white;
+        stroke-dashoffset: 0;
+        stroke-dasharray: 2380;
+        animation-name: d;
+        animation-duration: 1.3s;
+        animation-timing-function: cubic-bezier(0.32, 0.5, 0.84, 0.58);
+        fill: none;
+    }
+    @keyframes d {
+        from{
+            stroke-dashoffset: 2380;
+        }
+        to{
+            stroke-dashoffset: 0;
+        }
+    }
+    #v
+    {
+        stroke: none;
+        animation-name: v-fill;
+        animation-duration: 0.8s;
+        animation-delay: 2.3s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes v-fill {
+        0%{
+            fill: black;
+        }
+        100%{
+            fill:#FE3F89;
+        }
+    }
+    #v-border
+    {
+        stroke-width: 1;
+        stroke: #FE3F89;
+        stroke-dashoffset: 1540;
+        stroke-dasharray: 1540;
+        animation-name: v;
+        animation-duration: 0.7s;
+        animation-delay: 1.3s;
+        animation-fill-mode: forwards;
+        animation-timing-function: cubic-bezier(0.32, 0.5, 0.8, 0.6);
+        fill: none;
+    }
+    @keyframes v {
+
+        0%{
+            stroke-dashoffset: 1540;
+        }
+        100%{
+            stroke-dashoffset: 0;
+        }
+    }
+    #m
+    {
+        animation-name: m-fill;
+        animation-delay: 2.1s;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes m-fill {
+        0%{
+            fill:black;
+        }
+        100%{
+            fill: white;
+        }
+    }
+    #m-border{
+        stroke-width: 1;
+        stroke: white;
+        stroke-dashoffset: 1590;
+        stroke-dasharray: 1590;
+        animation-fill-mode: forwards;
+        fill: none;
+        animation-name: m;
+        animation-delay: 1.5s;
+        animation-duration: 0.6s;
+        animation-timing-function: cubic-bezier(0.32, 0.5, 0.84, 0.6);
+    }
+    @keyframes m {
+        0%{
+            stroke-dashoffset: 1590;
+        }
+        100%{
+            stroke-dashoffset: 0;
+        }
+    }
+    body{
+        background-color: black;
+    }
+
+</style>
+</html>
