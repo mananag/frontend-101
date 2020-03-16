@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B1 Clock</title>
+    <style>
+        #clock
+        {
+            position: absolute;
+            top: 50vh;
+            left: 50vw;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="clock" width="850" height="850">
+
+    </canvas>
+</body>
+<script>
+    function face() {
+        let canvas = document.getElementById("clock");
+        let ctx = canvas.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(425,425,300,0,2*Math.PI);
+        ctx.fillStyle = " #ffc01c";
+        ctx.fill();
+    }
+    function hand() {
+        let canvas = document.getElementById("clock");
+        let ctx;
+        let now = new Date();
+        let hour = now.getHours();
+        hour = hour%12;
+        let minute = now.getMinutes();
+        let second = now.getSeconds();
+        hour = (hour*Math.PI/6)+(minute*Math.PI/(6*60))+(second*Math.PI/(360*60));
+        minute = (minute*Math.PI/30)+(second*Math.PI/(30*60));
+        second = (second*Math.PI/30);
+        ctx = canvas.getContext("2d");
+        ctx.translate(425, 425);
+        ctx.rotate(hour);
+        ctx.translate(-425, -425);
+        ctx.beginPath();
+        ctx.moveTo(425, 425);
+        ctx.lineTo(425, 300);
+        ctx.lineWidth= 10;
+        ctx.strokeStyle = "black";
+        ctx.lineCap = "round";
+        ctx.stroke();
+        ctx.translate(425, 425);
+        ctx.rotate(-hour);
+        ctx.translate(-425, -425);
+        ctx.translate(425, 425);
+        ctx.rotate(minute);
+        ctx.translate(-425, -425);
+        ctx.beginPath();
+        ctx.moveTo(425, 425);
+        ctx.lineTo(425, 200);
+        ctx.lineWidth= 8;
+        ctx.strokeStyle = "white";
+        ctx.lineCap = "round";
+        ctx.stroke();
+        ctx.translate(425, 425);
+        ctx.rotate(-minute);
+        ctx.translate(-425, -425);
+        ctx.translate(425, 425);
+        ctx.rotate(second);
+        ctx.translate(-425, -425);
+        ctx.beginPath();
+        ctx.moveTo(425, 425);
+        ctx.lineTo(425, 150);
+        ctx.lineWidth= 4;
+        ctx.strokeStyle = "red";
+        ctx.lineCap = "round";
+        ctx.stroke();
+        ctx.translate(425, 425);
+        ctx.rotate(-second);
+        ctx.translate(-425, -425);
+        ctx.beginPath();
+        ctx.arc(425,425,20,0,2*Math.PI);
+        ctx.fillStyle = " black";
+        ctx.fill();
+    }
+    function clock()
+    {
+        face();
+        hand();
+    }
+    setInterval(clock , 100);
+</script>
+</html>
