@@ -39,49 +39,28 @@
         minute = (minute*Math.PI/30)+(second*Math.PI/(30*60));
         second = (second*Math.PI/30);
         ctx = canvas.getContext("2d");
-        ctx.translate(425, 425);
-        ctx.rotate(hour);
-        ctx.translate(-425, -425);
-        ctx.beginPath();
-        ctx.moveTo(425, 425);
-        ctx.lineTo(425, 300);
-        ctx.lineWidth= 10;
-        ctx.strokeStyle = "black";
-        ctx.lineCap = "round";
-        ctx.stroke();
-        ctx.translate(425, 425);
-        ctx.rotate(-hour);
-        ctx.translate(-425, -425);
-        ctx.translate(425, 425);
-        ctx.rotate(minute);
-        ctx.translate(-425, -425);
-        ctx.beginPath();
-        ctx.moveTo(425, 425);
-        ctx.lineTo(425, 200);
-        ctx.lineWidth= 8;
-        ctx.strokeStyle = "white";
-        ctx.lineCap = "round";
-        ctx.stroke();
-        ctx.translate(425, 425);
-        ctx.rotate(-minute);
-        ctx.translate(-425, -425);
-        ctx.translate(425, 425);
-        ctx.rotate(second);
-        ctx.translate(-425, -425);
-        ctx.beginPath();
-        ctx.moveTo(425, 425);
-        ctx.lineTo(425, 150);
-        ctx.lineWidth= 4;
-        ctx.strokeStyle = "red";
-        ctx.lineCap = "round";
-        ctx.stroke();
-        ctx.translate(425, 425);
-        ctx.rotate(-second);
-        ctx.translate(-425, -425);
+        drawHand(250, 10, hour, 'black', ctx);
+        drawHand(200, 8, minute, 'white', ctx);
+        drawHand(150, 4, second, 'red', ctx);
         ctx.beginPath();
         ctx.arc(425,425,20,0,2*Math.PI);
         ctx.fillStyle = " black";
         ctx.fill();
+    }
+    function drawHand(l,w, angle, color, ctx) {
+        ctx.translate(425, 425);
+        ctx.rotate(angle);
+        ctx.translate(-425, -425);
+        ctx.beginPath();
+        ctx.moveTo(425, 425);
+        ctx.lineTo(425, l);
+        ctx.lineWidth= w;
+        ctx.strokeStyle = color;
+        ctx.lineCap = "round";
+        ctx.stroke();
+        ctx.translate(425, 425);
+        ctx.rotate(-angle);
+        ctx.translate(-425, -425);
     }
     function clock()
     {
