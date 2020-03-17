@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B3-Multiple Select</title>
+    <style>
+        body{
+            background-color: deepskyblue;
+        }
+        table, tr, td{
+            border: 1px black solid;
+            border-collapse: collapse;
+            padding: 20px;
+            background-color: white;
+        }
+        table{
+            box-shadow: 6px 6px 12px 0px;
+            position: absolute;
+            top: 50vh;
+            left: 50vw;
+            transform: translate(-50%, -50%);
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" id="0"></td>
+                <td>This is an input layout</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="1"></td>
+                <td>Check one item</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="2"></td>
+                <td>Hold down your shift key</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="3"></td>
+                <td>Check a lower item</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="4"></td>
+                <td>Everything in between should be checked</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="5"></td>
+                <td>Try to do it without using libraries</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="6"></td>
+                <td>Just regular Javascript</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    var isshift = 0;
+    window.addEventListener('keydown', function (event) {
+        if(event.key == "Shift")
+        {
+            isshift=1;
+        }
+    });
+    window.addEventListener('keyup', function (event) {
+        if(event.key == "Shift")
+        {
+            isshift=0;
+        }
+    });
+    row = document.getElementsByTagName("input");
+    var prev=1, current,temp;
+    for(var input of row)
+    {
+        input.addEventListener('click', function () {
+            current=this.id;
+//        console.log(current);
+//        console.log(prev);
+            if(isshift && row[current].checked == true && row[prev].checked == true){
+                if(current<prev)
+                {
+                    temp=current;
+                    current=prev;
+                    prev=temp;
+                }
+                click(prev, current);
+            }
+            prev=this.id;;
+        })
+    }
+    function click(a,b) {
+        for(let i=a; i<b; i++)
+        {
+            row[i].checked=true;
+        }
+    }
+    window.onload = function(){
+        for(var input of row){
+            input.checked = false;
+        }
+    }
+</script>
+</html>
